@@ -77,7 +77,7 @@ function showTransactions() {
        transactionContainer.appendChild(transactionNameField);
 
        const transactionAmountField = document.createElement('SPAN');
-       transactionAmountField.textContent = transactionAmount.toFixed(2);
+       transactionAmountField.textContent = '$' + transactionAmount.toFixed(2);
        transactionContainer.appendChild(transactionAmountField);
 
        transactionList.appendChild(liItem);
