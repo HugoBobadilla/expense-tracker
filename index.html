@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Expense Tracker</h1>
+
+        <div class="main-balance">
+            <h3>Your Balance</h3>
+            <p id="main-balance">$0</p>
+        </div>
+
+        <div class="single-balance">
+            <div>
+                <p class="title">Income</p>
+                <p class="income-amount">+$0.00</p>
+            </div>
+            <div class="vl"></div>
+            <div>
+                <p class="title">Expense</p>
+                <p class="expense-amount">-$0.00</p>
+            </div>
+        </div>
+
+        <h3>History</h3>
+        <hr>
+        <div class="history">
+            <ul class="transaction-list">
+                <!-- <li class="plus">
+                    <span class="delete-btn">X</span><div class="transaction"><p>Salary</p><span>$500.00</span></div>
+                </li>
+                <li class="minus">
+                    <span class="delete-btn">X</span><div class="transaction"><p>Food</p><span>-$20.00</span></div>
+                <li class="minus">
+                    <span class="delete-btn">X</span><div class="transaction"><p>Beer</p><span>-$50.00</span></div>
+                </li> -->
+            </ul>
+        </div>
+
+        <form id="form">
+            <h3>Add New Transaction</h3>
+            <hr>
+            <div id="error"></div>
+            <label for="transaction_text">Transaction</label>
+            <input class="input-field" type="text" placeholder="Enter Transaction" id="transaction_text">
+            <label for="amount">Amount <span>(negative - expense, positive - income)</span></label>
+            <input class="input-field" type="number" id="amount" placeholder="Enter Amount">
+            <button type="submit" id="btn-submit">Add Transaction</button>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
