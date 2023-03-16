@@ -1,6 +1,3 @@
-let transactions = [];
-
-let editMode = false;
 
 const form = document.querySelector('#form');
 const transactionNameInput = document.getElementById('transaction_text');
@@ -12,11 +9,18 @@ const totalAmount = document.querySelector('.income-amount');
 const totalExpensesTxt = document.querySelector('.expense-amount');
 const totalIncomesTxt = document.querySelector('.income-amount');
 
+window.addEventListener('DOMContentLoaded', showTransactions);
+
+const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
+
+let transactions = localStorage.getItem('transactions') !== null ? localStorageTransactions : [];;
+let editMode = false;
+
 form.addEventListener('submit', validateForm);
 
 function validateForm(e) {
     e.preventDefault();
-    
+    console.log(transactions)
     if(transactionAmountInput.value === '' || transactionNameInput === '') {
         let errorMsg = document.createElement('P');
         errorMsg.textContent = 'Transaction and Amount fields are required.';
@@ -41,6 +45,7 @@ function addTransaction(transaction) {
     transactions.push(transaction);
     showTransactions();
     form.reset();
+    localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
 function showTransactions() {
@@ -72,7 +77,7 @@ function showTransactions() {
        transactionContainer.appendChild(transactionNameField);
 
        const transactionAmountField = document.createElement('SPAN');
-       transactionAmountField.textContent = transactionAmount;
+       transactionAmountField.textContent = transactionAmount.toFixed(2);
        transactionContainer.appendChild(transactionAmountField);
 
        transactionList.appendChild(liItem);
@@ -81,10 +86,10 @@ function showTransactions() {
        mainBalance.textContent = '$' + totalBalance;
 
        let totalExpenses = calculateTotalExpenses();
-       totalExpensesTxt.textContent = '$' + totalExpenses;
+       totalExpensesTxt.textContent = '$' + totalExpenses.toFixed(2);
 
        let totalIncomes = calculateTotalIncomes();
-       totalIncomesTxt.textContent = '$' + totalIncomes;
+       totalIncomesTxt.textContent = '$' + totalIncomes.toFixed(2);
 
     })
 }
@@ -120,4 +125,5 @@ function removeTransaction(id) {
     transactions = transactions.filter(transaction => transaction.id !== id);
     cleanHtml();
     showTransactions();
+    localStorage.setItem('transactions', JSON.stringify(transactions));
 }
