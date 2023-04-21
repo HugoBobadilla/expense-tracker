@@ -1,3 +1,6 @@
 # expense-tracker
 Expense Tracker made with HTML, CSS and Javascript.
-Live preview https://hugobobadilla.github.io/expense-tracker/
+
+Use the app for tracking your incomes and expenses.
+
+Live site https://hugobobadilla.github.io/expense-tracker/
